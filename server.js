@@ -3,6 +3,7 @@
 
 // init project
 const express = require('express');
+const lodash = require('lodash');
 const app = express();
 
 // we've started you off with Express, 
@@ -10,11 +11,12 @@ const app = express();
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+  response.send("hello")
 });
 
 app.get('/random', function(request, response) {
-  response.send("hello world");
+  let choice = lodash.sample(["hi", "hola", "td bem"])
+  response.send(choice);
 });
 
 // listen for requests :)
