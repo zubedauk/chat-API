@@ -4,12 +4,9 @@
 // init project
 const express = require('express');
 const lodash = require('lodash');
+
 const app = express();
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
   response.send("hello")
 });
@@ -23,3 +20,7 @@ app.get('/random', function(request, response) {
 const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+
+//read about routing
+// http://expressjs.com/en/starter/basic-routing.html
