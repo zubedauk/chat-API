@@ -3,17 +3,16 @@
 
 // init project
 const express = require('express');
-const lodash = require('lodash');
 
 const app = express();
 
 app.get('/', function(request, response) {
-  response.send("hello")
+  response.send("hello CYF")
 });
 
-app.get('/random', function(request, response) {
-  let choice = lodash.sample(["hi", "hola", "td bem"])
-  response.send(choice);
+
+app.get('/data', function(request, response) {
+  response.json([1,2,3])
 });
 
 // listen for requests :)
