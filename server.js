@@ -6,7 +6,7 @@ const express = require("express");
 const app = express();
 
 //load the quotes JSON
-const Quotes = require("./quotes.json");
+const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -17,7 +17,6 @@ app.get("/", function(request, response) {
 });
 
 //START OF YOUR CODE...
-
 
 
 
