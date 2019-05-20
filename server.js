@@ -1,39 +1,18 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
 
-//load the quotes JSON
-const quotes = require("./quotes.json");
-
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-app.get("/", function(request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + '/index.html');
 });
 
-//START OF YOUR CODE...
-
-
-
-
-
-
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+const welcomeMessage = {
+  id: 0,
+  from: "Kash",
+  text: "Welcome to CYF chat system!"
 }
 
-//Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function() {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+//This array is our "data store".  
+//Note that messages will be lost when glitch restarts our server.
+const messages = [welcomeMessage]
+
+app.listen(process.env.PORT);
