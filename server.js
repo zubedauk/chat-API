@@ -7,12 +7,13 @@ app.get('/', function(request, response) {
 
 const welcomeMessage = {
   id: 0,
-  from: "Kash",
+  from: "Bart",
   text: "Welcome to CYF chat system!"
 }
 
-//This array is our "data store".  
-//Note that messages will be lost when glitch restarts our server.
+//This array is our "data store".
+//We will start with one message in the array.
+//Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
 
 app.listen(process.env.PORT);
