@@ -1,9 +1,9 @@
 const express = require("express");
+const cors = require('cors')
+
 const app = express();
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/index.html');
-});
+app.use(cors())
 
 const welcomeMessage = {
   id: 0,
@@ -15,5 +15,15 @@ const welcomeMessage = {
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
+
+
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + '/index.html');
+});
+
+
+
+
+
 
 app.listen(process.env.PORT);
