@@ -38,9 +38,7 @@ app.get('/', function(request, response) {
   response.send("https://zubeda-chat-srver.glitch.me/messages")
 });
 //
-app.get("/messages/search?text=express",function(req,res){
-  res.send(req.query.text)
-}
+
 //show all existing messages
 app.get("/messages",function(req,res){
     
@@ -88,6 +86,10 @@ app.post("/messages",function(req,res){
     
   // 
 })
+app.get("/messages/search?text=express", function(request, response) {
+  const {query}=request.query.text
+  response.send(query)
+});
 //***********API on root****** */
 
 ////////////////z//////////////////////////////////beda end
