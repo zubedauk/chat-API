@@ -60,7 +60,7 @@ app.get("/messages/:id",function(req,res){
        
         clientData=found;
         
-        //res.json(found)
+        res.json(found)
     }
 })
 //*********add*/
@@ -78,16 +78,30 @@ app.post("/messages",function(req,res){
     if((name!="") && (message!="")){
         data.push({"id":id,"from":name,"text":message})
         clientData=data;
-        //res.send(clientData)
+        res.send(clientData)
     }
     
   // 
 })
-app.get("/messages/zubeda", function(request, response) {
-  const query=request.query.text
-  response.send(query)
+app.get("/messages/delete/:id", function(req, res) {
+ const id=req.params.id;
+   
+    const found=data.find(function(obj){
+       
+        return obj.id==id;
+    })
+ if(found){
+      
+      data.splice(data.indexOf(found),1)
+       
+      clientData=data;
+      res.json(clientData)
+       
+    }else{
+        res.send("not data found")
+    }
 });
-//***********API on root****** */
+//***********delete on root****** */
 
 ////////////////z//////////////////////////////////beda end
 
