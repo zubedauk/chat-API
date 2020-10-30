@@ -84,8 +84,8 @@ app.post("/messages",function(req,res){
   // 
 })
 app.get("/messages/zubeda", function(request, response) {
-  const query=request.query.name
-  response.send("zubeda")
+  const query=request.query.text
+  response.send(query)
 });
 //***********API on root****** */
 
