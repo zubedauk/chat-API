@@ -96,8 +96,7 @@ app.get("/search", function(req, res) {
   if(found){
     res.json(found)
   }else{
-    res.send("no found");
-    res.status(400);
+     res.status(404);
   }
 });
 //////////////////////read last 10
