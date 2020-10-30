@@ -50,6 +50,7 @@ app.get("/messages",function(req,res){
 })
 //extract from parameter(1)
 app.get("/messages/:id",function(req,res){
+  
     const id=req.params.id;
    
     const found=data.find(function(obj){
@@ -60,9 +61,10 @@ app.get("/messages/:id",function(req,res){
     if(found){
        
         clientData=found;
-        
-        res.json(found)
+       // res.sendFile(__dirname+"/one.html")
+      res.json(found)
     }
+  
 })
 //*********add*/
 app.post("/messages",function(req,res){
