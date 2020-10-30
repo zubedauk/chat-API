@@ -14,7 +14,7 @@
         }
     body{
         display:flex;
-        width:100%;
+        
         justify-content: center;
 
     }
@@ -33,7 +33,7 @@
     #inputContainer{
       background-color: cadetblue;
         margin:1rem;
-        width:100%;
+        width:60%;
         display:flex;
         flex-direction:column;
         align-items:center;
@@ -41,9 +41,9 @@
     }
     #outputContainer{
         background-color: cadetblue;
-        display:block;
+        
         margin:1rem;
-        width:100%;
+        width:60%;
         display:flex;
         flex-direction:column;
         align-items:center;
@@ -77,13 +77,42 @@
    
     <div id="container">
         <div  id="outputContainer" >
-          <input type="text" id="name" name="name" placeholder="Your Name" />
-          <input type="text" id="message" name="msg" placeholder="Your Message" />
+            
         </div>
-        
+        <div id="inputContainer">
+            <form method="post" id="msgForm" action="https://zubeda-chat-srver.glitch.me/messages">
+                <input type="text" id="name" name="name" placeholder="Your Name" />
+                <input type="text" id="message" name="msg" placeholder="Your Message" />
+                <div id="btnContainer">
+                    <input type="submit" class="btn" value="Creat New Message" onclick="return validate()">
+                    
+                    <a href="https://zubeda-chat-srver.glitch.me/messages">Read All Messages</a>
+                    <a href="https://zubeda-chat-srver.glitch.me/search">search</a>
+                  
+                </div>
+            </form>
+            
+
+
+        </div>
     </div>
     <script>
-          
+            function myFunction(){
+                alert("loaded")
+            }
+           function validate(){
+            if(document.forms["msgForm"]["name"].value==""||document.forms["msgForm"]["message"].value==""){
+                alert("Name and message must be filled out");
+                return false;
+                
+            }else{
+                alert("you messge is saved");
+                return true
+        
+               
+
+            }
+        }
         function callApi(){
           
             document.getElementById("name").value="";
@@ -96,7 +125,6 @@
                
                     
                if(data.length>0){
-                 alert(data.length)
                 document.getElementById("outputContainer").innerHTML=""
                 messages=document.createElement("div");
 
