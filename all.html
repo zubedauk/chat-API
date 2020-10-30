@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>search</title>
-  <style>
-     #outputContainer{
+    <title>Document</title>
+    <link type="css" href="public/style.css" rel="stylesheet" />
+   
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 10px;
+        }
+    body{
+        display:flex;
+        
+        justify-content: center;
+
+    }
+    p{
+        font-size: 2rem;
+    }
+    #container{
+        background-color: burlywood;
+        width:80%;
+        display:flex;
+       flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #inputContainer{
+      background-color: cadetblue;
+        margin:1rem;
+        width:60%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: center; 
+    }
+    #outputContainer{
         background-color: cadetblue;
         
         margin:1rem;
@@ -15,21 +49,51 @@
         align-items:center;
         justify-content: center; 
     }
-  </style>
-</head>
-<body onload="myFunction()">
-    <div  id="outputContainer" >
-      <h1>
-        search
-      </h1>
-    </div>
-  <script>
-    function myFunction(){
-        t=document.createElement("p");
-                t.textContent="start"
-      document.getElementById("outputContainer").appendChild(t)
+    #btnContainer{
+        
+        margin-top:1rem;
+        width:100%;
+       display:flex;
+       justify-content: flex-end;
     }
-    function callApi(){
+    #name{
+        height:3rem;
+        width:100%;
+    }
+    #message{
+        height:3rem;
+        margin-top:1rem;
+        width:100%;
+        
+    }
+    .btn{
+        height:3rem;
+      font-weight:bold;
+    }
+    </style>
+   
+</head>
+<body onload="callApi()">
+   
+    <div id="container">
+        <div  id="outputContainer" >
+            
+        </div>
+        <div id="inputContainer">
+            <form method="post" id="msgForm" action="https://zubeda-chat-srver.glitch.me/messages">
+                <input type="text" id="name" name="name" placeholder="Your Name" />
+                <input type="text" id="message" name="msg" placeholder="Your Message" />
+                <div id="btnContainer">
+                    <input type="submit" class="btn" value="Creat New Message" onclick="return validate()">
+                    <button class="btn" onclick="callApi()">Read All Messages</button>
+                    <a href="https://zubeda-chat-srver.glitch.me/messages">Read All Messages</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+          
+        function callApi(){
           
             document.getElementById("name").value="";
             document.getElementById("message").value=""
@@ -69,8 +133,7 @@
                 }              
                 }
             )
-        
-  </script>
+        }
+    </script>
 </body>
-  
 </html>
