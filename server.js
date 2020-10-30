@@ -17,15 +17,72 @@ const welcomeMessage = {
 const messages = [welcomeMessage]
 
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/index.html');
-});
-/////////zubeda start
+
+
+/////////********************************zubeda start
 var msg={};
 const data=[{"id":0,"from":"Ahmad","text":"hello mama"},{"id":1,"from":"mama","text":"hi dear"}];
 let clientData=[];
 
-////////////////zbeda end
+//root
+app.get('/', function(request, response) {
+  //response.sendFile(__dirname + '/index.html');
+  response.send("https://zubeda-chat-srver.glitch.me/messages")
+});
+//show all existing messages
+app.get("/messages",function(req,res){
+    
+    res.sendFile(__dirname+"/index.html")
+    clientData=data;
+   
+})
+//extract from parameter(1)
+app.get("/messages/:id",function(req,res){
+    const id=req.params.id;
+   
+    const found=data.find(function(obj){
+       
+        return obj.id==id;
+    })
+
+    if(found){
+       
+        clientData=found;
+        
+        res.json(found)
+    }else{
+        res.send("no data found")
+    }
+
+})
+//*********add*/
+app.post("/messages",function(req,res){
+    const name=req.body.name;
+    const message=req.body.msg;
+    const length=data.length;
+    var id=0;
+    if(length===0){
+        id=0;
+    }else{
+
+        id=length;
+    }
+    if((name!="") && (message!="")){
+        data.push({"id":id,"from":req.body.from,"text":req.body.text})
+        clientData=data;
+        res.send(clientData)
+    }
+    
+  // 
+})
+//***********API on root****** */
+app.get("/message/api",function(req,res){
+   
+        res.send(clientData)
+    
+        
+})
+////////////////z//////////////////////////////////beda end
 
 
 
