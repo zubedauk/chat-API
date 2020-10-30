@@ -97,8 +97,10 @@ app.get("/search", function(req, res) {
   }
 });
 //////////////////////read last 10
-app.get("/last", function(req, res) {
-}
+app.get("/last-ten", function(req, res) {
+  clientData=data;
+  res.json(clientData.slice(0,10))
+})
 //////////////////////////////////////////////////////////////
 app.get("/messages/delete/:id", function(req, res) {
  const id=req.params.id;
