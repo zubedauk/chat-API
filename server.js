@@ -41,8 +41,9 @@ app.get('/', function(req, res) {
 
 //show all existing messages
 app.get("/messages",function(req,res){
+   res.sendFile(__dirname+"/all.html")
     clientData=data;
-    res.json(data)
+   // res.json(data)
   
    
 })

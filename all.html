@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+  <style>
+     #outputContainer{
+        background-color: cadetblue;
+        
+        margin:1rem;
+        width:60%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: center; 
+    }
+  </style>
+</head>
+<body onload="callApi()">
+    <div  id="outputContainer" >
+            
+    </div>
+</body>
+  <script>
+    function callApi(){
+          
+            document.getElementById("name").value="";
+            document.getElementById("message").value=""
+            fetch("https://zubeda-chat-srver.glitch.me/messages/api").
+            then(function(obj){
+                return obj.json()
+            }).
+            then(function(data){
+               
+                    
+               if(data.length>0){
+                document.getElementById("outputContainer").innerHTML=""
+                messages=document.createElement("div");
+
+                t=document.createElement("p");
+                t.textContent="start"
+                document.getElementById("outputContainer").appendChild(t);
+
+                document.getElementById("outputContainer").appendChild(t);
+                        for(let i=0;i<data.length;i++){
+                            p= document.createElement("p");
+                            del=document.createElement("button")
+                            del.textContent="X";
+                            p.textContent=data[i].text+"@"+data[i].from;
+                            del=document.createElement("button")
+                            del.textContent="X";
+                            del.style.name="del";
+                            del.id="del";
+                            p.appendChild(del);
+                            messages.appendChild(p);
+                        }
+
+                        document.getElementById("outputContainer").appendChild(messages)
+
+                }else{
+                    alert("msg box is empty plz create a new msg")
+                }              
+                }
+            )
+        
+  </script>
+</html>
