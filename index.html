@@ -1,26 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Welcome to CYF Chat</title>
-  </head>
-  <body>
-    <h1>
-      CYF Chat
-    </h1>
-    <h2>
-      Send a message
-    </h2>
-    <form action="/messages" method="post">
-      <p>
-        Name: <input type="text" name="from" placeholder="Your Name" /> <br />
-        Message: <input type="text" name="text" placeholder="The message..." /> <br />
-      </p>
-      <button type="submit">
-        Send
-      </button>
-    </form>
-    
-    <a href="/messages">See all messages</a>
-    
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="css" href="public/style.css" rel="stylesheet" />
+   
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 10px;
+        }
+    body{
+        display:flex;
+        
+        justify-content: center;
+
+    }
+    p{
+        font-size: 2rem;
+    }
+    #container{
+        background-color: burlywood;
+        width:80%;
+        display:flex;
+       flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #inputContainer{
+      background-color: cadetblue;
+        margin:1rem;
+        width:60%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: center; 
+    }
+    #outputContainer{
+        background-color: cadetblue;
+        
+        margin:1rem;
+        width:60%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: center; 
+    }
+    #btnContainer{
+        
+        margin-top:1rem;
+        width:100%;
+       display:flex;
+       justify-content: flex-end;
+    }
+    #name{
+        height:3rem;
+        width:100%;
+    }
+    #message{
+        height:3rem;
+        margin-top:1rem;
+        width:100%;
+        
+    }
+    .btn{
+        height:3rem;
+    }
+    </style>
+   
+</head>
+<body onload="callApi()">
+   
+    <div id="container">
+        <div  id="outputContainer" >
+            
+        </div>
+        <div id="inputContainer">
+            <form method="post"id="msgForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" />
+                <input type="text" id="message" name="msg" placeholder="Your Message" />
+                <div id="btnContainer">
+                    <input type="submit" class="btn" value="Submit" onclick="return validate()">
+                    <button onclick="callApi()" >Read All Messages</button>
+                </div>
+            </form>
+            
+
+
+        </div>
+    </div>
+    <script>
+            function myFunction(){
+                alert("loaded")
+            }
+           function validate(){
+            if(document.forms["msgForm"]["name"].value==""||document.forms["msgForm"]["message"].value==""){
+                alert("Name and message must be filled out");
+                return false;
+                
+            }else{
+                alert("you messge is saved");
+                return true
+        
+               
+
+            }
+        }
+        function callApi(){
+          
+            document.getElementById("name").value="";
+            document.getElementById("message").value=""
+            fetch("http://localhost:3000/message/api").
+            then(function(obj){
+                return obj.json()
+            }).
+            then(function(data){
+               alert(data.length)
+                    
+               if(data.length>0){
+                document.getElementById("outputContainer").innerHTML=""
+                messages=document.createElement("div");
+
+                t=document.createElement("p");
+                t.textContent="start"
+                document.getElementById("outputContainer").appendChild(t);
+
+                document.getElementById("outputContainer").appendChild(t);
+                        for(let i=0;i<data.length;i++){
+                            p= document.createElement("p");
+                            del=document.createElement("button")
+                            del.textContent="X";
+                            p.textContent=data[i].text+"@"+data[i].from;
+                            del=document.createElement("button")
+                            del.textContent="X";
+                            del.style.name="del";
+                            del.id="del";
+                            p.appendChild(del);
+                            messages.appendChild(p);
+                           
+                        }
+
+                        document.getElementById("outputContainer").appendChild(messages)
+
+                }else{
+                    alert("msg box is empty plz create a new msg")
+                }              
+                }
+            )
+        }
+    </script>
+</body>
 </html>

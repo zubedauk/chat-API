@@ -20,6 +20,12 @@ const messages = [welcomeMessage]
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 });
+/////////zubeda start
+var msg={};
+const data=[{"id":0,"from":"Ahmad","text":"hello mama"},{"id":1,"from":"mama","text":"hi dear"}];
+let clientData=[];
+
+////////////////zbeda end
 
 
 
