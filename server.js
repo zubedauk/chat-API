@@ -60,7 +60,7 @@ app.get("/messages/:id",function(req,res){
        
         clientData=found;
         
-        res.json(found)
+        //res.json(found)
     }
 })
 //*********add*/
