@@ -78,11 +78,31 @@ app.post("/messages",function(req,res){
     if((name!="") && (message!="")){
         data.push({"id":id,"from":name,"text":message})
         clientData=data;
-        res.send(clientData)
+        //res.send(clientData)
     }
     
   // 
 })
+///////////////////////////////////////////////////////search
+app.get("/messages/search", function(req, res) {
+ const id=req.params.id;
+   
+    const found=data.find(function(obj){
+       
+        return obj.id==id;
+    })
+ if(found){
+      
+      data.splice(data.indexOf(found),1)
+       
+      clientData=data;
+      res.json(clientData)
+       
+    }else{
+        res.send("not data found")
+    }
+});
+//////////////////////////////////////////////////////////////
 app.get("/messages/delete/:id", function(req, res) {
  const id=req.params.id;
    
@@ -102,6 +122,7 @@ app.get("/messages/delete/:id", function(req, res) {
     }
 });
 //***********delete on root****** */
+////search
 
 ////////////////z//////////////////////////////////beda end
 
