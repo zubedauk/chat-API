@@ -41,8 +41,9 @@ app.get('/', function(req, res) {
 
 //show all existing messages
 app.get("/messages",function(req,res){
-    
+    clientData=data;
     res.json(data)
+  
    
 })
 //extract from parameter(1)
@@ -82,7 +83,7 @@ app.post("/messages",function(req,res){
   // 
 })
 ///////////////////////////////////////////////////////search
-app.get("messages/search", function(req, res) {
+app.get("/search", function(req, res) {
   const search=req.query;
  //res.send(req.query.text)
   const found=data.find(function(obj){
