@@ -33,6 +33,7 @@ app.get("/messages/api",function(req,res){
 app.get('/', function(request, response) {
   //response.sendFile(__dirname + '/index.html');
   response.send("https://zubeda-chat-srver.glitch.me/messages")
+  response.send("https://zubeda-chat-srver.glitch.me/messages")
 });
 //show all existing messages
 app.get("/messages",function(req,res){
@@ -55,7 +56,7 @@ app.get("/messages/:id",function(req,res){
        
         clientData=found;
         
-        //res.json(found)
+        res.json(found)
     }else{
         res.send("no data found")
     }
