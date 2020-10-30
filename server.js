@@ -29,12 +29,18 @@ app.get("/messages/api",function(req,res){
     
         
 })
+//search
+
 //root
 app.get('/', function(request, response) {
   //response.sendFile(__dirname + '/index.html');
   response.send("https://zubeda-chat-srver.glitch.me/messages")
   response.send("https://zubeda-chat-srver.glitch.me/messages")
 });
+//
+app.get("/messages/search?text=express",function(req,res){
+  res.send(req.query.text)
+}
 //show all existing messages
 app.get("/messages",function(req,res){
     
