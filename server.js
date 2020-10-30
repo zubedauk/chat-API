@@ -21,7 +21,7 @@ const messages = [welcomeMessage]
 
 /////////********************************zubeda start
 var msg={};
-const data=[{"id":0,"from":"Ahmad","text":"hello mama"},{"id":1,"from":"mama","text":"hi dear"}];
+const data=[{"id":0,"from":"Ahmad","text":"hello mama:express"},{"id":1,"from":"mama","text":"hi dear"}];
 let clientData=[];
 app.get("/messages/api",function(req,res){
    
@@ -96,7 +96,8 @@ app.get("/search", function(req, res) {
   if(found){
     res.json(found)
   }else{
-    res.send("no found")
+    res.send("no found");
+    res.status(400);
   }
 });
 //////////////////////read last 10
