@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors')
-
+const bodyParser=require("body-parser")
 const app = express();
 
 app.use(cors())
@@ -34,6 +34,7 @@ app.get("/messages",function(req,res){
     
     res.sendFile(__dirname+"/index.html")
     clientData=data;
+  //res.send(clientData)
    
 })
 //extract from parameter(1)
@@ -68,7 +69,7 @@ app.post("/messages",function(req,res){
         id=length;
     }
     if((name!="") && (message!="")){
-        data.push({"id":id,"from":req.body.from,"text":req.body.text})
+        data.push({"id":id,"from":name,"text":message})
         clientData=data;
         res.send(clientData)
     }
