@@ -61,10 +61,7 @@ app.get("/messages/:id",function(req,res){
         clientData=found;
         
         res.json(found)
-    }else{
-        res.send("no data found")
     }
-
 })
 //*********add*/
 app.post("/messages",function(req,res){
@@ -86,9 +83,9 @@ app.post("/messages",function(req,res){
     
   // 
 })
-app.get("/messages/search?text=express", function(request, response) {
-  const {query}=request.query.text
-  response.send(query)
+app.get("/messages/zubeda", function(request, response) {
+  const query=request.query.name
+  response.send("zubeda")
 });
 //***********API on root****** */
 
