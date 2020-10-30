@@ -86,8 +86,19 @@ app.post("/messages",function(req,res){
 ///////////////////////////////////////////////////////search
 app.get("/search", function(req, res) {
   const search=req.query;
- res.send(search.first)
+ //res.send(req.query.text)
+  const found=data.find(function(obj){
+    return obj.text.toLowerCase().includes(req.query.text);
+  })
+  if(found){
+    res.json(found)
+  }else{
+    res.send("no found")
+  }
 });
+//////////////////////read last 10
+app.get("/last", function(req, res) {
+}
 //////////////////////////////////////////////////////////////
 app.get("/messages/delete/:id", function(req, res) {
  const id=req.params.id;
