@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require('cors')
 const bodyParser=require("body-parser")
 const app = express();
-
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 const welcomeMessage = {
@@ -23,7 +23,12 @@ const messages = [welcomeMessage]
 var msg={};
 const data=[{"id":0,"from":"Ahmad","text":"hello mama"},{"id":1,"from":"mama","text":"hi dear"}];
 let clientData=[];
-
+app.get("/messages/api",function(req,res){
+   
+        res.json(clientData)
+    
+        
+})
 //root
 app.get('/', function(request, response) {
   //response.sendFile(__dirname + '/index.html');
@@ -50,7 +55,7 @@ app.get("/messages/:id",function(req,res){
        
         clientData=found;
         
-        res.json(found)
+        //res.json(found)
     }else{
         res.send("no data found")
     }
@@ -71,18 +76,13 @@ app.post("/messages",function(req,res){
     if((name!="") && (message!="")){
         data.push({"id":id,"from":name,"text":message})
         clientData=data;
-        res.send(clientData)
+        //res.send(clientData)
     }
     
   // 
 })
 //***********API on root****** */
-app.get("/message/api",function(req,res){
-   
-        res.send(clientData)
-    
-        
-})
+
 ////////////////z//////////////////////////////////beda end
 
 

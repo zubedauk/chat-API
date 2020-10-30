@@ -113,12 +113,12 @@
           
             document.getElementById("name").value="";
             document.getElementById("message").value=""
-            fetch("http://localhost:3000/message/api").
+            fetch("https://zubeda-chat-srver.glitch.me/messages/api").
             then(function(obj){
                 return obj.json()
             }).
             then(function(data){
-               alert(data.length)
+               
                     
                if(data.length>0){
                 document.getElementById("outputContainer").innerHTML=""
