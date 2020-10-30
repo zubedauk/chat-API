@@ -14,7 +14,7 @@
         }
     body{
         display:flex;
-        
+        width:100%;
         justify-content: center;
 
     }
@@ -41,7 +41,7 @@
     }
     #outputContainer{
         background-color: cadetblue;
-        
+        display:block;
         margin:1rem;
         width:100%;
         display:flex;
@@ -77,27 +77,15 @@
    
     <div id="container">
         <div  id="outputContainer" >
-           <h1>
-             search
-          </h1>
+          <input type="text" id="name" name="name" placeholder="Your Name" />
+          <input type="text" id="message" name="msg" placeholder="Your Message" />
         </div>
-        <div id="inputContainer1">
-<!--             <form method="post" id="msgForm" action="https://zubeda-chat-srver.glitch.me/messages"> -->
-                <input type="text" id="name" name="name" placeholder="Your Name" />
-                <input type="text" id="message" name="msg" placeholder="Your Message" />
-              
-<!--                 <div id="btnContainer">
-                    <input type="submit" class="btn" value="Creat New Message" onclick="return validate()">
-                    <button class="btn" onclick="callApi()">Read All Messages</button>
-                    <a href="https://zubeda-chat-srver.glitch.me/messages">Read All Messages</a>
-                </div> -->
-<!--             </form> -->
-        </div>
+        
     </div>
     <script>
           
         function callApi(){
-          alert("saddsa")
+          
             document.getElementById("name").value="";
             document.getElementById("message").value=""
             fetch("https://zubeda-chat-srver.glitch.me/messages/api").
@@ -108,6 +96,7 @@
                
                     
                if(data.length>0){
+                 alert(data.length)
                 document.getElementById("outputContainer").innerHTML=""
                 messages=document.createElement("div");
 
