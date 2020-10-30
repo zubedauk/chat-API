@@ -17,12 +17,18 @@
     }
   </style>
 </head>
-<body onload="callApi()">
+<body onload="myFunction()">
     <div  id="outputContainer" >
-            
+      <h1>
+        search
+      </h1>
     </div>
-</body>
   <script>
+    function myFunction(){
+        t=document.createElement("p");
+                t.textContent="start"
+      document.getElementById("outputContainer").appendChild(t)
+    }
     function callApi(){
           
             document.getElementById("name").value="";
@@ -65,4 +71,6 @@
             )
         
   </script>
+</body>
+  
 </html>

@@ -25,7 +25,7 @@ const data=[{"id":0,"from":"Ahmad","text":"hello mama"},{"id":1,"from":"mama","t
 let clientData=[];
 app.get("/messages/api",function(req,res){
    
-        res.json(clientData)
+        res.json(data)
     
         
 })
