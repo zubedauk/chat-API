@@ -32,19 +32,17 @@ app.get("/messages/api",function(req,res){
 //search
 
 //root
-app.get('/', function(request, response) {
+app.get('/', function(req, res) {
   //response.sendFile(__dirname + '/index.html');
-  response.send("https://zubeda-chat-srver.glitch.me/messages")
-  response.send("https://zubeda-chat-srver.glitch.me/messages")
+  res.sendFile(__dirname+"/index.html")
+   
 });
 //
 
 //show all existing messages
 app.get("/messages",function(req,res){
     
-    res.sendFile(__dirname+"/index.html")
-    clientData=data;
-  //res.send(clientData)
+    res.json(data)
    
 })
 //extract from parameter(1)
@@ -84,7 +82,7 @@ app.post("/messages",function(req,res){
   // 
 })
 ///////////////////////////////////////////////////////search
-app.get("/search", function(req, res) {
+app.get("messages/search", function(req, res) {
   const search=req.query;
  //res.send(req.query.text)
   const found=data.find(function(obj){
