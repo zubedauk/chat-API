@@ -72,14 +72,18 @@ app.get("/messages/delete/:id", function(req, res) {
 app.get("/messages/search", function(req, res) {
   const search=req.query;
  //res.send(req.query.text)
-  const found=data.find(function(obj){
-    return obj.text.toLowerCase().includes(req.query.text);
-  })
-  if(found){
-    res.json(found)
+  if(!(req.query.text)){
+    res.send("please enter query e.g /messages/search?text=express")
   }else{
-     res.status(400);
-    res.send("np data found")
+    const found=data.find(function(obj){
+      return obj.text.toLowerCase().includes(req.query.text);
+    })
+    if(found){
+      res.json(found)
+    }else{
+       res.status(400);
+      res.send("n data found")
+    }
   }
 });
 //////////////////////read last 10
