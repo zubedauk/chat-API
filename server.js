@@ -84,6 +84,8 @@ app.post("/messages",function(req,res){
         data.push({"id":id,"from":name,"text":message,"time":time})
         clientData=data;
         //res.send(clientData)
+    }else{
+       res.status(400)
     }
     
   // 
@@ -98,7 +100,7 @@ app.get("/search", function(req, res) {
   if(found){
     res.json(found)
   }else{
-     res.status(404);
+     res.status(400);
   }
 });
 //////////////////////read last 10
