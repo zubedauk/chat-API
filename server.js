@@ -48,6 +48,25 @@ app.get("/messages",function(req,res){
   
    
 })
+///////////////////////////////////////////////////////search
+app.get("/messages/search", function(req, res) {
+  const search=req.query;
+ //res.send(req.query.text)
+  const found=data.find(function(obj){
+    return obj.text.toLowerCase().includes(req.query.text);
+  })
+  if(found){
+    res.json(found)
+  }else{
+     res.status(400);
+    res.send("np data found")
+  }
+});
+//////////////////////read last 10
+app.get("/messages/last-ten", function(req, res) {
+  clientData=data;
+  res.json(clientData.slice(0,10))
+})
 //extract from parameter(1)
 app.get("/messages/:id",function(req,res){
   
@@ -64,8 +83,8 @@ app.get("/messages/:id",function(req,res){
        // res.sendFile(__dirname+"/one.html")
       res.json(found)
     }else{
-        res.status(400)
-    }
+          res.status(400);
+    res.send("n0 data found")
   
 })
 //*********add*/
@@ -87,29 +106,13 @@ app.post("/messages",function(req,res){
         clientData=data;
         //res.send(clientData)
     }else{
-       res.status(400)
+         res.status(400);
+    res.send("n0 data found")
     }
     
   // 
 })
-///////////////////////////////////////////////////////search
-app.get("/search", function(req, res) {
-  const search=req.query;
- //res.send(req.query.text)
-  const found=data.find(function(obj){
-    return obj.text.toLowerCase().includes(req.query.text);
-  })
-  if(found){
-    res.json(found)
-  }else{
-     res.status(400);
-  }
-});
-//////////////////////read last 10
-app.get("/last-ten", function(req, res) {
-  clientData=data;
-  res.json(clientData.slice(0,10))
-})
+
 //////////////////////////////////////////////////////////////
 app.get("/messages/delete/:id", function(req, res) {
  const id=req.params.id;
@@ -126,7 +129,8 @@ app.get("/messages/delete/:id", function(req, res) {
       res.json(clientData)
        
     }else{
-        res.send("not data found")
+          res.status(400);
+      res.send("no data found")
     }
 });
 //***********delete on root****** */
