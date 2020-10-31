@@ -48,30 +48,7 @@ app.get("/messages",function(req,res){
   
    
 })
-//////////////////////////////delete
-app.get("/messages/delete/:id", function(req, res) {
-let id=-1;
-  id=req.params.id;
-  if(!(req.params.id)){
-    res.send("please enter pamameter e.g /messages/delete/2")
-  }else{  
-    const found=data.find(function(obj){
-       
-        return obj.id==id;
-    })
- if(found){
-      
-      data.splice(data.indexOf(found),1)
-       
-      clientData=data;
-      res.send("deleted")
-       
-    }else{
-          res.status(400);
-      res.send("no data found")
-    }
-  }
-});
+
 ///////////////////////////////////////////////////////search
 app.get("/messages/search", function(req, res) {
   const search=req.query;
@@ -86,10 +63,11 @@ app.get("/messages/search", function(req, res) {
       res.json(found)
     }else{
        res.status(400);
-      res.send("n data found")
+      res.send("no data found to search")
     }
   }
 });
+
 //////////////////////read last 10
 app.get("/messages/last-ten", function(req, res) {
   clientData=data;
@@ -112,9 +90,10 @@ app.get("/messages/:id",function(req,res){
       res.json(found)
     }else{
           res.status(400);
-    res.send("n0 data found")
+    res.send("n0 data found(last 10)")
     }
 })
+
 //*********add*/
 app.post("/messages",function(req,res){
     var today = new Date();
@@ -135,7 +114,7 @@ app.post("/messages",function(req,res){
         //res.send(clientData)
     }else{
          res.status(400);
-    res.send("n0 data found")
+    res.send("n0 data found(allmessage)")
     }
     
   // 
