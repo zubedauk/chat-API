@@ -134,20 +134,20 @@
                 messages=document.createElement("div");
 
                 t=document.createElement("p");
-                t.textContent="start"
+                t.textContent="chat server"
                 document.getElementById("outputContainer").appendChild(t);
 
                 document.getElementById("outputContainer").appendChild(t);
                         for(let i=0;i<data.length;i++){
                             p= document.createElement("p");
-                            del=document.createElement("button")
-                            del.textContent="X";
+                            span=document.createElement("button")
+                            span.textContent="X";
                             p.textContent=data[i].text+"@"+data[i].from;
-                            del=document.createElement("button")
-                            del.textContent="X";
-                            del.style.name="del";
-                            del.id="del";
-                            p.appendChild(del);
+                            span=document.createElement("button")
+                            span.textContent=":"+data[i].time;
+                            span.style.name="span";
+                            span.id="span";
+                            p.appendChild(span);
                             messages.appendChild(p);
                         }
 

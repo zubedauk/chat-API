@@ -21,7 +21,7 @@ const messages = [welcomeMessage]
 
 /////////********************************zubeda start
 var msg={};
-const data=[{"id":0,"from":"Ahmad","text":"hello mama:express"},{"id":1,"from":"mama","text":"hi dear"}];
+const data=[{"id":0,"from":"Ahmad","text":"hello mama:express","time":"7:46:34"},{"id":1,"from":"mama","text":"hi dear","time":"8:46:34"}];
 let clientData=[];
 app.get("/messages/api",function(req,res){
    
@@ -68,6 +68,8 @@ app.get("/messages/:id",function(req,res){
 })
 //*********add*/
 app.post("/messages",function(req,res){
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const name=req.body.name;
     const message=req.body.msg;
     const length=data.length;
@@ -79,7 +81,7 @@ app.post("/messages",function(req,res){
         id=length;
     }
     if((name!="") && (message!="")){
-        data.push({"id":id,"from":name,"text":message})
+        data.push({"id":id,"from":name,"text":message,"time":time})
         clientData=data;
         //res.send(clientData)
     }
