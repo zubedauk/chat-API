@@ -63,6 +63,8 @@ app.get("/messages/:id",function(req,res){
         clientData=found;
        // res.sendFile(__dirname+"/one.html")
       res.json(found)
+    }else{
+        res.status(400)
     }
   
 })
