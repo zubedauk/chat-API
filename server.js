@@ -93,7 +93,7 @@ app.post("/messages",function(req,res){
   // 
 })
 ///////////////////////////////////////////////////////search
-app.get("/search", function(req, res) {
+app.get("/messages/search", function(req, res) {
   const search=req.query;
  //res.send(req.query.text)
   const found=data.find(function(obj){
