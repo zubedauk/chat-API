@@ -50,8 +50,11 @@ app.get("/messages",function(req,res){
 })
 //////////////////////////////delete
 app.get("/messages/delete/:id", function(req, res) {
- const id=req.params.id;
-   
+let id=-1;
+  id=req.params.id;
+  if(!(req.params.id)){
+    res.send("please enter pamameter e.g /messages/delete/2")
+  }else{  
     const found=data.find(function(obj){
        
         return obj.id==id;
@@ -67,6 +70,7 @@ app.get("/messages/delete/:id", function(req, res) {
           res.status(400);
       res.send("no data found")
     }
+  }
 });
 ///////////////////////////////////////////////////////search
 app.get("/messages/search", function(req, res) {

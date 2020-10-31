@@ -77,7 +77,7 @@
    
     <div id="container">
         <div  id="outputContainer" >
-           
+            
         </div>
         <div id="inputContainer">
             <form method="post" id="msgForm" action="https://zubeda-chat-srver.glitch.me/messages">
@@ -85,15 +85,21 @@
                 <input type="text" id="message" name="msg" placeholder="Your Message" />
                 <div id="btnContainer">
                     <input type="submit" class="btn" value="Creat New Message" onclick="return validate()">
-                     <button>
+                    
+                    <button>
                       <a href="https://zubeda-chat-srver.glitch.me/messages">Read All Messages</a>
                   </button>
                   <button>
-                     <a href="https://zubeda-chat-srver.glitch.me/search">search</a>
+                     <a href="https://zubeda-chat-srver.glitch.me/messages/search">search</a>
                   </button>
                    <button>
-                     <a href="https://zubeda-chat-srver.glitch.me/last-ten">latest 10</a>
+                     <a href="https://zubeda-chat-srver.glitch.me/messages/last-ten">latest 10</a>
                   </button>
+                  
+                  <button>
+                     <a href="https://zubeda-chat-srver.glitch.me/messages/delete">Delete</a>
+                  </button>
+                  
                 </div>
             </form>
             
@@ -134,20 +140,20 @@
                 messages=document.createElement("div");
 
                 t=document.createElement("p");
-                t.textContent="chat server"
+                t.textContent="start"
                 document.getElementById("outputContainer").appendChild(t);
 
                 document.getElementById("outputContainer").appendChild(t);
                         for(let i=0;i<data.length;i++){
                             p= document.createElement("p");
-                            span=document.createElement("button")
-                            span.textContent="X";
+                            del=document.createElement("button")
+                            del.textContent="X";
                             p.textContent=data[i].text+"@"+data[i].from;
-                            span=document.createElement("button")
-                            span.textContent=":"+data[i].time;
-                            span.style.name="span";
-                            span.id="span";
-                            p.appendChild(span);
+                            del=document.createElement("button")
+                            del.textContent="X";
+                            del.style.name="del";
+                            del.id="del";
+                            p.appendChild(del);
                             messages.appendChild(p);
                         }
 
