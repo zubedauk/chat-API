@@ -48,6 +48,26 @@ app.get("/messages",function(req,res){
   
    
 })
+//////////////////////////////delete
+app.get("/messages/delete/:id", function(req, res) {
+ const id=req.params.id;
+   
+    const found=data.find(function(obj){
+       
+        return obj.id==id;
+    })
+ if(found){
+      
+      data.splice(data.indexOf(found),1)
+       
+      clientData=data;
+      res.json("deleted")
+       
+    }else{
+          res.status(400);
+      res.send("no data found")
+    }
+});
 ///////////////////////////////////////////////////////search
 app.get("/messages/search", function(req, res) {
   const search=req.query;
@@ -85,7 +105,7 @@ app.get("/messages/:id",function(req,res){
     }else{
           res.status(400);
     res.send("n0 data found")
-  
+    }
 })
 //*********add*/
 app.post("/messages",function(req,res){
@@ -113,26 +133,7 @@ app.post("/messages",function(req,res){
   // 
 })
 
-//////////////////////////////////////////////////////////////
-app.get("/messages/delete/:id", function(req, res) {
- const id=req.params.id;
-   
-    const found=data.find(function(obj){
-       
-        return obj.id==id;
-    })
- if(found){
-      
-      data.splice(data.indexOf(found),1)
-       
-      clientData=data;
-      res.json(clientData)
-       
-    }else{
-          res.status(400);
-      res.send("no data found")
-    }
-});
+
 //***********delete on root****** */
 ////search
 
