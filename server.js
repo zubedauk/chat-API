@@ -61,7 +61,7 @@ app.get("/messages/delete/:id", function(req, res) {
       data.splice(data.indexOf(found),1)
        
       clientData=data;
-      res.json("deleted")
+      res.send("deleted")
        
     }else{
           res.status(400);
