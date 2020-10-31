@@ -23,6 +23,30 @@ const messages = [welcomeMessage]
 var msg={};
 const data=[{"id":0,"from":"Ahmad","text":"hello mama:express","time":"7:46:34"},{"id":1,"from":"mama","text":"hi dear","time":"8:46:34"}];
 let clientData=[];
+//////////////////////////////delete
+app.delete("/messages/del/:id", function(req, res) {
+let id=-1;
+  id=req.params.id;
+  if(!(req.params.id)){
+    res.send("please enter pamameter e.g /messages/delete/2")
+  }else{  
+    const found=data.find(function(obj){
+       
+        return obj.id==id;
+    })
+ if(found){
+      
+      data.splice(data.indexOf(found),1)
+       
+      clientData=data;
+      res.send("deleted")
+       
+    }else{
+          res.status(400);
+      res.send("no data found tod delete")
+    }
+  }
+});
 app.get("/messages/api",function(req,res){
    
         res.json(data)
